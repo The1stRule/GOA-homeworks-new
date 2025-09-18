@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+main {
+    height: 100vh;
+    padding: 10px;
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: #1b1b1b;
+    color: white;
+}
