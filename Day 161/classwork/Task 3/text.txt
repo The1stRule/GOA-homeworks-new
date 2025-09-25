@@ -1,0 +1,3 @@
+Hello World!
+This is the text.txt file,
+and I read this file using Node.js.
