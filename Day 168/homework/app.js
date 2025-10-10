@@ -1,4 +1,4 @@
-// 1) შექმენით tours API - უნდა შეგეძლოთ tours - ების შეცვლა, დამატება, წაშლა და წამოღება put, get, delete, post - მეთოდებით
+// 1) შექმენით tours API - უნდა შეგეძლოთ tours - ების შეცვლა, დამატება, წაშლა და წამოღება patch, get, delete, post - მეთოდებით
 
 const express = require("express");
 
@@ -119,6 +119,22 @@ app.post("/tours", express.json(), (req, res) => {
     res.status(201).send({
         message: "Tour added successfully",
         tour: newtour
+    })
+})
+
+app.patch("/tours/:id", express.json(), (req, res) => {
+    const id = parseInt(req.params.id);
+    const tourIndex = tours.findIndex(obj => obj.id === id);
+
+    if(tourIndex === -1) {
+        return res.status(404).send("Tour not found");
+    }
+
+    tours[tourIndex] = { ...tours[tourIndex], ...req.body };
+
+    res.send({
+        message: "Tour changed successfully",
+        tour: tours[tourIndex]
     })
 })
 
